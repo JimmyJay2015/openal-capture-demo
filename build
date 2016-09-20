@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ ! -e openal ]; then
+	sudo apt-get install cmake
+	echo "install opanal-----"
+	git clone git://repo.or.cz/openal-soft.git openal
+	cd openal/build
+	cmake -D LIBTYPE:STRING=STATIC ..
+	make
+	sudo make install
+	cd ../..
+fi
+
+rm a.out
+
+echo "build demo"
+buildcmd="g++ -g demo.cpp -I/usr/local/include -lopenal -lpthread -ldl -lrt"
+echo "    $buildcmd"
+
+`$buildcmd`
+
+echo "run demo"
+./a.out
+
