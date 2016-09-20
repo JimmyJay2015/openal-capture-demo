@@ -18,6 +18,8 @@ int main(int argc, char *argv[]) {
     const ALCchar *dName = alcGetString(0, ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER);
 	cout<<"ready to open device :"<< dName <<endl;
     ALCdevice *device = alcCaptureOpenDevice(dName, AudioVoiceMsgFrequency, AL_FORMAT_MONO16, AudioVoiceMsgFrequency / 5);    
+   	// 若挂掉，则注释上一行，替换下一行
+	//ALCdevice *device = alcCaptureOpenDevice(NULL, AudioVoiceMsgFrequency, AL_FORMAT_MONO16, AudioVoiceMsgFrequency / 5);    
 	if ( !device ){
 		cout<<"open device error" <<endl;
 		return 0;
